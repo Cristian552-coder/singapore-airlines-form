@@ -252,11 +252,6 @@
             font-style: italic;
         }
 
-        .markets-table {
-            width: 100%;
-            margin-top: 20px;
-        }
-
         .market-row {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -308,32 +303,9 @@
             overflow: hidden;
         }
 
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(212, 175, 55, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .submit-btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
         .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 24px rgba(0, 48, 135, 0.3);
-        }
-
-        .submit-btn span {
-            position: relative;
-            z-index: 1;
         }
 
         .footer-note {
@@ -344,30 +316,8 @@
         }
 
         @media (max-width: 768px) {
-            .header {
-                padding: 40px 24px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
-            .form-content {
-                padding: 40px 24px;
-            }
-
-            .form-group.half {
-                width: 100%;
-                margin-right: 0;
-            }
-
-            .market-row {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 22px;
-            }
+            .market-row { grid-template-columns: 1fr; }
+            .form-group.half { width: 100%; margin-right: 0; }
         }
     </style>
 </head>
@@ -377,20 +327,13 @@
             <div class="header-content">
                 <div class="logo-placeholder">SINGAPORE AIRLINES</div>
                 <h1>NDC via Tech Partner Form</h1>
-                <p class="subtitle">Este formulario es para socios que buscan establecer una conexión NDC con Singapore Airlines a través de un Tech Partner aprobado por SIA. Una vez completado, recibirá una confirmación automática por correo electrónico.</p>
+                <p class="subtitle">Este formulario es para socios que buscan establecer una conexión NDC con Singapore Airlines a través de un Tech Partner aprobado por SIA.</p>
             </div>
         </div>
 
         <div class="form-content">
-           
-            <form id="ndcForm" action="https://formsubmit.co/cristian.lobato@tennders.com" method="POST">
-                <!-- FormSubmit Configuration -->
-                <input type="hidden" name="_subject" value="Nueva Solicitud NDC - Singapore Airlines">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="text" name="_honey" style="display:none">
+            <form id="ndcForm" action="https://formspree.io/f/maqdewrv" method="POST">
                 
-                <!-- Section A: Applicant Information -->
                 <div class="section">
                     <div class="section-header">
                         <div class="section-number">A</div>
@@ -399,42 +342,40 @@
 
                     <div class="form-group">
                         <label for="submissionDate">Fecha de presentación<span class="required">*</span></label>
-                        <input type="date" id="submissionDate" name="Fecha de presentación" required>
+                        <input type="date" id="submissionDate" name="fecha_presentacion" required>
                     </div>
 
                     <div class="form-group">
                         <label for="companyName">Nombre de la empresa solicitante<span class="required">*</span></label>
-                        <input type="text" id="companyName" name="Nombre de la empresa" required placeholder="Ingrese el nombre de su empresa">
+                        <input type="text" id="companyName" name="empresa" required placeholder="Ingrese el nombre de su empresa">
                     </div>
 
                     <div class="form-group">
                         <label for="registeredAddress">Dirección registrada del solicitante<span class="required">*</span></label>
-                        <textarea id="registeredAddress" name="Dirección registrada" required placeholder="Ingrese la dirección completa"></textarea>
+                        <textarea id="registeredAddress" name="direccion" required placeholder="Ingrese la dirección completa"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="website">Sitio web del solicitante<span class="required">*</span></label>
-                        <input type="url" id="website" name="Sitio web" required placeholder="https://www.ejemplo.com">
+                        <input type="url" id="website" name="web" required placeholder="https://www.ejemplo.com">
                     </div>
 
                     <div class="form-group half">
                         <label for="pocName">Nombre del punto de contacto general<span class="required">*</span></label>
-                        <input type="text" id="pocName" name="Nombre POC" required placeholder="Nombre completo">
+                        <input type="text" id="pocName" name="nombre_poc" required placeholder="Nombre completo">
                     </div>
 
                     <div class="form-group half">
                         <label for="pocEmail">Email del punto de contacto general<span class="required">*</span></label>
-                        <input type="email" id="pocEmail" name="Email POC" required placeholder="contacto@empresa.com">
+                        <input type="email" id="pocEmail" name="email_poc" required placeholder="contacto@empresa.com">
                     </div>
 
                     <div class="form-group">
                         <label for="apiUsage">Explique cómo pretende utilizar la API<span class="required">*</span></label>
-                        <textarea id="apiUsage" name="Uso de la API" required placeholder="Por ejemplo: vender billetes de SIA en su sitio web / aplicación móvil"></textarea>
-                        <div class="help-text">Describa detalladamente el uso previsto de la API</div>
+                        <textarea id="apiUsage" name="uso_api" required placeholder="Ej: vender billetes de SIA en su sitio web"></textarea>
                     </div>
                 </div>
 
-                <!-- Section B: NDC Connection Information -->
                 <div class="section">
                     <div class="section-header">
                         <div class="section-number">B</div>
@@ -443,116 +384,45 @@
 
                     <div class="form-group">
                         <label for="techPartner">Tech Partner elegido<span class="required">*</span></label>
-                        <input type="text" id="techPartner" name="Tech Partner" required placeholder="Nombre del Tech Partner">
+                        <input type="text" id="techPartner" name="tech_partner" required placeholder="Nombre del Tech Partner">
                     </div>
 
                     <div class="form-group">
                         <label>¿Ya está conectado con el partner mencionado?<span class="required">*</span></label>
                         <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="Conectado con partner" value="Sí" required>
-                                <span>Sí</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="Conectado con partner" value="No">
-                                <span>No</span>
-                            </label>
+                            <label class="radio-option"><input type="radio" name="conectado_partner" value="Sí" required><span>Sí</span></label>
+                            <label class="radio-option"><input type="radio" name="conectado_partner" value="No"><span>No</span></label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>Contenido a vender<span class="required">*</span></label>
                         <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="Contenido a vender" value="Solo billetes aéreos" required>
-                                <span>Solo billetes aéreos</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="Contenido a vender" value="Billetes y servicios auxiliares">
-                                <span>Billetes aéreos y servicios auxiliares</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Proceso de liquidación<span class="required">*</span></label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="Proceso de liquidación" value="Vía BSP" required>
-                                <span>Vía BSP</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="Proceso de liquidación" value="Pago directo a SIA">
-                                <span>Pago directo a SIA (solo FOP CC)</span>
-                            </label>
+                            <label class="radio-option"><input type="radio" name="contenido" value="Solo billetes" required><span>Solo billetes aéreos</span></label>
+                            <label class="radio-option"><input type="radio" name="contenido" value="Billetes y auxiliares"><span>Billetes y servicios auxiliares</span></label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>Método(s) de pago<span class="required">*</span></label>
-                        <input type="hidden" name="Métodos de pago" id="paymentMethodsHidden">
+                        <input type="hidden" name="metodos_pago" id="paymentMethodsHidden">
                         <div class="checkbox-group">
-                            <label class="checkbox-option">
-                                <input type="checkbox" class="payment-method" value="Tarjeta de crédito">
-                                <span>Tarjeta de crédito</span>
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" class="payment-method" value="Efectivo">
-                                <span>Efectivo</span>
-                            </label>
+                            <label class="checkbox-option"><input type="checkbox" class="payment-method" value="Tarjeta de crédito"><span>Tarjeta de crédito</span></label>
+                            <label class="checkbox-option"><input type="checkbox" class="payment-method" value="Efectivo"><span>Efectivo</span></label>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Para CC FOP, ¿puede mostrar un mensaje de verificación?<span class="required">*</span></label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="Verificación CC" value="Sí" required>
-                                <span>Sí</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="Verificación CC" value="No">
-                                <span>No</span>
-                            </label>
-                        </div>
-                        <div class="help-text">Consulte: <a href="https://www.singaporeair.com/en_UK/bn/faqCategory/?category=29864" target="_blank">mensaje de verificación</a></div>
                     </div>
 
                     <div class="form-group">
                         <label>Integración con APIs de servicio NDC<span class="required">*</span></label>
-                        <input type="hidden" name="Integración NDC" id="ndcIntegrationHidden">
+                        <input type="hidden" name="integracion_ndc" id="ndcIntegrationHidden">
                         <div class="checkbox-group">
-                            <label class="checkbox-option">
-                                <input type="checkbox" class="ndc-integration" value="Cancelar reservas">
-                                <span>Para cancelar reservas</span>
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" class="ndc-integration" value="Cambiar reservas">
-                                <span>Para cambiar reservas</span>
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" class="ndc-integration" value="Ninguna">
-                                <span>Ninguna</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Retener reservas (pago diferido)<span class="required">*</span></label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="Retener reservas" value="Sí" required>
-                                <span>Sí</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="Retener reservas" value="No">
-                                <span>No</span>
-                            </label>
+                            <label class="checkbox-option"><input type="checkbox" class="ndc-integration" value="Cancelar"><span>Cancelar reservas</span></label>
+                            <label class="checkbox-option"><input type="checkbox" class="ndc-integration" value="Cambiar"><span>Cambiar reservas</span></label>
+                            <label class="checkbox-option"><input type="checkbox" class="ndc-integration" value="Ninguna"><span>Ninguna</span></label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Section C: Markets -->
                 <div class="section">
                     <div class="section-header">
                         <div class="section-number">C</div>
@@ -561,34 +431,17 @@
 
                     <div id="marketsContainer">
                         <div class="market-row">
-                            <div class="form-group" style="margin-bottom: 0;">
-                                <label>Mercado<span class="required">*</span></label>
-                                <input type="text" name="Mercado 1" required placeholder="ej. Singapore">
-                            </div>
-                            <div class="form-group" style="margin-bottom: 0;">
-                                <label>POC local (email)<span class="required">*</span></label>
-                                <input type="email" name="POC Email 1" required placeholder="ej. xxx@abc.com">
-                            </div>
-                            <div class="form-group" style="margin-bottom: 0;">
-                                <label>Código de agente<span class="required">*</span></label>
-                                <input type="text" name="Código Agente 1" required placeholder="ej. 32311111">
-                            </div>
+                            <div class="form-group" style="margin-bottom:0;"><label>Mercado*</label><input type="text" name="mercado_1" required></div>
+                            <div class="form-group" style="margin-bottom:0;"><label>POC local*</label><input type="email" name="poc_local_1" required></div>
+                            <div class="form-group" style="margin-bottom:0;"><label>Cód. Agente*</label><input type="text" name="codigo_agente_1" required></div>
                         </div>
                     </div>
-
                     <button type="button" class="add-market-btn" onclick="addMarketRow()">+ Agregar otro mercado</button>
                 </div>
 
-                <!-- Submit Section -->
                 <div class="submit-section">
-                    <button type="submit" class="submit-btn">
-                        <span>Enviar Formulario</span>
-                    </button>
-                    <p class="footer-note">
-                        Los datos serán enviados automáticamente a Singapore Airlines.<br>
-                        Recibirá una copia de confirmación en su correo electrónico.<br>
-                        <strong>La finalización del formulario no garantiza el acceso al contenido NDC de SIA.</strong>
-                    </p>
+                    <button type="submit" class="submit-btn"><span>Enviar Formulario</span></button>
+                    <p class="footer-note">Recibirá una copia de confirmación en su correo electrónico.</p>
                 </div>
             </form>
         </div>
@@ -597,43 +450,33 @@
     <script>
         let marketCount = 1;
 
-        // Add market row functionality
         function addMarketRow() {
             marketCount++;
             const container = document.getElementById('marketsContainer');
             const newRow = document.createElement('div');
             newRow.className = 'market-row';
             newRow.innerHTML = `
-                <div class="form-group" style="margin-bottom: 0;">
-                    <label>Mercado</label>
-                    <input type="text" name="Mercado ${marketCount}" placeholder="ej. Singapore">
-                </div>
-                <div class="form-group" style="margin-bottom: 0;">
-                    <label>POC local (email)</label>
-                    <input type="email" name="POC Email ${marketCount}" placeholder="ej. xxx@abc.com">
-                </div>
-                <div class="form-group" style="margin-bottom: 0;">
-                    <label>Código de agente</label>
-                    <input type="text" name="Código Agente ${marketCount}" placeholder="ej. 32311111">
-                </div>
+                <div class="form-group" style="margin-bottom:0;"><label>Mercado</label><input type="text" name="mercado_${marketCount}"></div>
+                <div class="form-group" style="margin-bottom:0;"><label>POC local</label><input type="email" name="poc_local_${marketCount}"></div>
+                <div class="form-group" style="margin-bottom:0;"><label>Cód. Agente</label><input type="text" name="codigo_agente_${marketCount}"></div>
             `;
             container.appendChild(newRow);
         }
 
-        // Handle checkbox groups
         document.getElementById('ndcForm').addEventListener('submit', function(e) {
-            // Payment methods
+            // Procesar Checkboxes antes de enviar
             const paymentMethods = Array.from(document.querySelectorAll('.payment-method:checked'))
                 .map(cb => cb.value).join(', ');
-            document.getElementById('paymentMethodsHidden').value = paymentMethods || 'Ninguno seleccionado';
+            document.getElementById('paymentMethodsHidden').value = paymentMethods || 'Ninguno';
             
-            // NDC Integration
             const ndcIntegration = Array.from(document.querySelectorAll('.ndc-integration:checked'))
                 .map(cb => cb.value).join(', ');
-            document.getElementById('ndcIntegrationHidden').value = ndcIntegration || 'Ninguno seleccionado';
+            document.getElementById('ndcIntegrationHidden').value = ndcIntegration || 'Ninguna';
+
+            // Cambiar texto del botón
+            document.querySelector('.submit-btn span').textContent = "Enviando...";
         });
 
-        // Set today's date as default
         document.getElementById('submissionDate').valueAsDate = new Date();
     </script>
 </body>
